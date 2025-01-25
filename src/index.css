@@ -7,7 +7,7 @@
 
    color-scheme: light dark;
    color: rgba(255, 255, 255, 0.87);
-   background-color: #242424;
+   background-color: #000000;
 
    font-synthesis: none;
    text-rendering: optimizeLegibility;
@@ -28,14 +28,6 @@
    animation: fadeIn 1.5s ease-out;
 }
 
-video {
-  background-color: transparent !important;
-  z-index: 10;
-}
-
-.animationStyleBack,
-.animationStylePlay,
-.animationStyleForward {
-  background-color: transparent !important; 
-  z-index: 10;
+.btn-style {
+  @apply absolute w-25 h-25 md:w-50 md:h-50 lg:w-60 lg:h-60 object-contain z-20;
 }
