@@ -29,7 +29,14 @@
 }
 
 video {
-   mask-image: none;
-   -webkit-mask-image: none;
-   background-color: transparent;
+  background-color: transparent !important;
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
 }
