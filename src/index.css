@@ -30,13 +30,12 @@
 
 video {
   background-color: transparent !important;
-  display: block;
+  z-index: 10;
 }
 
-.hidden {
-  display: none !important;
-}
-
-.bg-transparent {
-  background-color: transparent !important;
+.animationStyleBack,
+.animationStylePlay,
+.animationStyleForward {
+  background-color: transparent !important; 
+  z-index: 10;
 }
