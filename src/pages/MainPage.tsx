@@ -89,11 +89,11 @@ const MainPage = () => {
 
    const videoStyles = "absolute top-0 left-0 w-full h-full object-cover z-10";
    const animationStyleBack =
-      "absolute left-0 bottom-0 w-60 h-60 object-cover z-10 hidden";
+      "absolute left-0 bottom-0 w-60 h-60 object-cover z-10 hidden bg-transparent";
    const animationStylePlay =
-      "absolute left-1/2 transform -translate-x-1/2 bottom-0 w-60 h-60 object-cover overflow-hidden z-10 hidden";
+      "absolute left-1/2 transform -translate-x-1/2 bottom-0 w-60 h-60 object-cover overflow-hidden z-10 hidden bg-transparent";
    const animationStyleForward =
-      "absolute right-0 bottom-0 w-60 h-60 object-cover overflow-hidden z-10 hidden";
+      "absolute right-0 bottom-0 w-60 h-60 object-cover overflow-hidden z-10 hidden bg-transparent";
 
    if (currentView === "StartGameScreen") {
       return (
