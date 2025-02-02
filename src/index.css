@@ -31,3 +31,7 @@
 .btn-style {
   @apply absolute w-25 h-25 md:w-50 md:h-50 lg:w-60 lg:h-60 object-contain z-20;
 }
+
+.link-style {
+   @apply bg-white rounded-full block w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 p-0.5;
+ }

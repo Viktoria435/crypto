@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import buttonAnimationBack from "../assets/media/red_button_animation.webm";
 import buttonAnimationForward from "../assets/media/blue_button_animation.webm";
 import buttonAnimationPlay from "../assets/media/play_button_animation.webm";
-import MainScreen from "../assets/images/MainScreen.png";
+import MainScreen from "../assets/images/Main_Screen.png";
 import PlayScreen from "../assets/images/PlayScreen.png";
 import ThirdScreen from "../assets/images/ThirdScreen.png";
+import Dex from "../assets/images/dexScreener.png";
+import Twitter from "../assets/images/twitter.png";
+import Discord from "../assets/images/discord.png";
 
 const MainPage = () => {
    const animationRefBack = useRef<HTMLVideoElement | null>(null);
@@ -127,6 +130,38 @@ const MainPage = () => {
                         style={{ cursor: "pointer" }}
                      />
                   </button>
+                  <div className="absolute flex gap-x-2 left-1/2 transform -translate-x-1/2 bottom-5">
+                     <a
+                        href="#"
+                        className="link-style"
+                     >
+                        <img
+                           className="w-full h-full object-contain"
+                           src={Dex}
+                           alt="Dex Logo"
+                        />
+                     </a>
+                     <a
+                        href="https://discord.gg/Xppzaw4K"
+                        className="link-style"
+                     >
+                        <img
+                           className="w-full h-full object-contain"
+                           src={Discord}
+                           alt="Dex Logo"
+                        />
+                     </a>
+                     <a
+                        href="https://x.com/Bundy_Sol"
+                        className="link-style"
+                     >
+                        <img
+                           className="w-full h-full object-contain"
+                           src={Twitter}
+                           alt="Dex Logo"
+                        />
+                     </a>
+                  </div>
                   <button
                      onClick={() =>
                         changeBackgroundWithFade(PlayScreen, "StartGameScreen")
