@@ -28,13 +28,13 @@ const MainPage = () => {
       });
    }, []);
 
-   useEffect(() => {
-      [ NextTimeAnimation, NextTimeAnimationT, JackpotAnimation].forEach((src) => {
-         const video = document.createElement("video");
-         video.src = src;
-         video.preload = "auto";
-      });
-   }, []);
+   // useEffect(() => {
+   //    [ NextTimeAnimation, NextTimeAnimationT, JackpotAnimation].forEach((src) => {
+   //       const video = document.createElement("video");
+   //       video.src = src;
+   //       video.preload = "auto";
+   //    });
+   // }, []);
    
 
    const changeBackgroundWithFade = (
@@ -154,6 +154,7 @@ const MainPage = () => {
                               "StartGameScreen"
                            )
                         }
+                        preload="auto"
                      />
                   )}
                </div>
