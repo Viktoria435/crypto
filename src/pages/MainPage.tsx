@@ -28,6 +28,15 @@ const MainPage = () => {
       });
    }, []);
 
+   useEffect(() => {
+      [ NextTimeAnimation, NextTimeAnimationT, JackpotAnimation].forEach((src) => {
+         const video = document.createElement("video");
+         video.src = src;
+         video.preload = "auto";
+      });
+   }, []);
+   
+
    const changeBackgroundWithFade = (
       nextImage: string,
       nextView: "default" | "StartGameScreen" | "ViewScreen" | "GameScreen"
