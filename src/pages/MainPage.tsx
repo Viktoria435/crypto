@@ -20,21 +20,43 @@ const MainPage = () => {
    >("default");
    const [backgroundImage, setBackgroundImage] = useState<string>(MainScreen);
    const [isTransitioning, setIsTransitioning] = useState(false);
+   const [loading, setLoading] = useState(true); 
+   const [progress, setProgress] = useState(0); 
 
    useEffect(() => {
-      [MainScreen, ViewScreen, LaunchScreen].forEach((src) => {
-         const img = new Image();
-         img.src = src;
-      });
-   }, []);
+      const mediaSources = [
+         MainScreen, ViewScreen, LaunchScreen,
+         NextTimeAnimation, NextTimeAnimationT, JackpotAnimation,
+         buttonAnimationBack, buttonAnimationForward, buttonAnimationPlay
+      ];
 
-   // useEffect(() => {
-   //    [ NextTimeAnimation, NextTimeAnimationT, JackpotAnimation].forEach((src) => {
-   //       const video = document.createElement("video");
-   //       video.src = src;
-   //       video.preload = "auto";
-   //    });
-   // }, []);
+      let loaded = 0;
+
+      const loadMedia = (src: string) => {
+         return new Promise<void>((resolve) => {
+            if (src.endsWith(".png")) {
+               const img = new Image();
+               img.src = src;
+               img.onload = () => {
+                  loaded++;
+                  setProgress(Math.round((loaded / mediaSources.length) * 100));
+                  resolve();
+               };
+            } else if (src.endsWith(".webm")) {
+               const video = document.createElement("video");
+               video.src = src;
+               video.preload = "auto";
+               video.onloadeddata = () => {
+                  loaded++;
+                  setProgress(Math.round((loaded / mediaSources.length) * 100));
+                  resolve();
+               };
+            }
+         });
+      };
+
+      Promise.all(mediaSources.map(loadMedia)).then(() => setLoading(false));
+   }, []);
    
 
    const changeBackgroundWithFade = (
@@ -74,6 +96,20 @@ const MainPage = () => {
       if (rand < 0.83) return NextTimeAnimationT;
       return JackpotAnimation;
    };
+
+   if (loading) {
+      return (
+         <div className="w-screen h-screen flex flex-col justify-center items-center bg-[#3c4351] text-white">
+            <div className="w-64 h-2 bg-gray-700 rounded">
+               <div
+                  className="h-2 bg-blue-500 rounded"
+                  style={{ width: `${progress}%` }}
+               ></div>
+            </div>
+            <p className="mb-4">{progress}%</p>
+         </div>
+      );
+   }
 
    return (
       <div
