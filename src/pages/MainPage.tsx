@@ -5,6 +5,8 @@ import buttonAnimationPlay from "../assets/media/play_button_animation.webm";
 import NextTimeAnimation from "../assets/media/NextTime.webm";
 import NextTimeAnimationT from "../assets/media/Trump.webm";
 import JackpotAnimation from "../assets/media/Jackpot.webm";
+import ShibaAnimation from "../assets/media/Shiba.webm";
+import FrogAnimation from "../assets/media/Frog.webm";
 import MainScreen from "../assets/images/Main_Screen.png";
 import LaunchScreen from "../assets/images/PlayScreen.png";
 import ViewScreen from "../assets/images/ThirdScreen.png";
@@ -20,14 +22,22 @@ const MainPage = () => {
    >("default");
    const [backgroundImage, setBackgroundImage] = useState<string>(MainScreen);
    const [isTransitioning, setIsTransitioning] = useState(false);
-   const [loading, setLoading] = useState(true); 
-   const [progress, setProgress] = useState(0); 
+   const [loading, setLoading] = useState(true);
+   const [progress, setProgress] = useState(0);
 
    useEffect(() => {
       const mediaSources = [
-         MainScreen, ViewScreen, LaunchScreen,
-         NextTimeAnimation, NextTimeAnimationT, JackpotAnimation,
-         buttonAnimationBack, buttonAnimationForward, buttonAnimationPlay
+         MainScreen,
+         ViewScreen,
+         LaunchScreen,
+         NextTimeAnimation,
+         NextTimeAnimationT,
+         JackpotAnimation,
+         FrogAnimation,
+         ShibaAnimation,
+         buttonAnimationBack,
+         buttonAnimationForward,
+         buttonAnimationPlay,
       ];
 
       let loaded = 0;
@@ -57,7 +67,6 @@ const MainPage = () => {
 
       Promise.all(mediaSources.map(loadMedia)).then(() => setLoading(false));
    }, []);
-   
 
    const changeBackgroundWithFade = (
       nextImage: string,
@@ -78,7 +87,7 @@ const MainPage = () => {
       if (currentView === "GameScreen" && animationRef.current) {
          const selectedAnimation = getRandomAnimation();
          if (animationRef.current) {
-            animationRef.current.src = selectedAnimation; 
+            animationRef.current.src = selectedAnimation;
             animationRef.current.play();
          }
       }
@@ -92,8 +101,10 @@ const MainPage = () => {
 
    const getRandomAnimation = () => {
       const rand = Math.random();
-      if (rand < 0.5) return NextTimeAnimation;
-      if (rand < 0.83) return NextTimeAnimationT;
+      if (rand < 0.3) return NextTimeAnimation;
+      if (rand < 0.55) return FrogAnimation;
+      if (rand < 0.75) return ShibaAnimation;
+      if (rand < 0.95) return NextTimeAnimationT;
       return JackpotAnimation;
    };
 
